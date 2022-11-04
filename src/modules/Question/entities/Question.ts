@@ -4,8 +4,9 @@ export class Question {
   private _id?: string;
   private _typeQuestion: "essay" | "multiple-choice";
   private _description: string;
-  private _answer: string;
+  private _answer: string | string[];
   private _createdAt?: Date;
+  private _correct?: string;
 
   public get id() {
     return this._id!;
@@ -23,20 +24,28 @@ export class Question {
     return this._answer;
   }
 
-  public get createdAt() {
-    return this._createdAt!;
+  public get correct() {
+    return this._correct;
   }
 
-  public set description(value: string) {
-    this._description = value;
+  public get createdAt() {
+    return this._createdAt!;
   }
 
   public set typeQuestion(value: "essay" | "multiple-choice") {
     this._typeQuestion = value;
   }
 
-  public set answer(value: string) {
+  public set description(value: string) {
+    this._description = value;
+  }
+
+  public set answer(value: string | string[]) {
     this._answer = value;
+  }
+
+  public set correct(value: string | undefined) {
+    this._correct = value;
   }
 
   private set id(value: string) {

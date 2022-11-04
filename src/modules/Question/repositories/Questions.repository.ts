@@ -8,6 +8,7 @@ export interface IQuestionsRepository {
     typeQuestion,
     answer,
     description,
+    correct,
   }: ICreateQuestionRepositoryDTO): Promise<IQuestionsListDTO>;
 }
 

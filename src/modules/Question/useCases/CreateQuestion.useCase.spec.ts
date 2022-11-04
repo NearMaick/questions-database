@@ -11,12 +11,13 @@ describe("Questions Use Case", () => {
     createQuestion = new CreateQuestionUseCase(inMemoryQuestionsRepository);
   });
 
-  it("Should be able a create a new essay question", async () => {
+  it("should be able a create a new essay question", async () => {
     await expect(
       createQuestion.execute({
         typeQuestion: "essay",
         description: "Example description",
         answer: "Description answer",
+        correct: undefined,
       })
     ).resolves.not.toThrow();
     expect(inMemoryQuestionsRepository.questions[0].typeQuestion).toEqual(
@@ -28,6 +29,38 @@ describe("Questions Use Case", () => {
     expect(inMemoryQuestionsRepository.questions[0].answer).toEqual(
       "Description answer"
     );
+    expect(inMemoryQuestionsRepository.questions[0]).toHaveProperty("id");
+    expect(inMemoryQuestionsRepository.questions[0]).toHaveProperty(
+      "createdAt"
+    );
+  });
+
+  it("should be able a create a new multiple-choice question", async () => {
+    await expect(
+      createQuestion.execute({
+        typeQuestion: "multiple-choice",
+        description: "Example description",
+        answer: ["answer A", "answer B", "answer C", "answer D", "answer E"],
+        correct: "answer A",
+      })
+    ).resolves.not.toThrow();
+    expect(inMemoryQuestionsRepository.questions[0].typeQuestion).toEqual(
+      "multiple-choice"
+    );
+    expect(inMemoryQuestionsRepository.questions[0].description).toEqual(
+      "Example description"
+    );
+    expect(inMemoryQuestionsRepository.questions[0].answer).toEqual([
+      "answer A",
+      "answer B",
+      "answer C",
+      "answer D",
+      "answer E",
+    ]);
+    expect(inMemoryQuestionsRepository.questions[0].correct).toEqual(
+      "answer A"
+    );
+
     expect(inMemoryQuestionsRepository.questions[0]).toHaveProperty("id");
     expect(inMemoryQuestionsRepository.questions[0]).toHaveProperty(
       "createdAt"
