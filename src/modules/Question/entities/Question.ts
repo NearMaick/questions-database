@@ -2,12 +2,17 @@ import { randomUUID } from "node:crypto";
 
 export class Question {
   private _id?: string;
+  private _typeQuestion: "essay" | "multiple-choice";
   private _description: string;
   private _answer: string;
   private _createdAt?: Date;
 
   public get id() {
     return this._id!;
+  }
+
+  public get typeQuestion() {
+    return this._typeQuestion;
   }
 
   public get description() {
@@ -24,6 +29,10 @@ export class Question {
 
   public set description(value: string) {
     this._description = value;
+  }
+
+  public set typeQuestion(value: "essay" | "multiple-choice") {
+    this._typeQuestion = value;
   }
 
   public set answer(value: string) {
@@ -43,3 +52,4 @@ export class Question {
     this._createdAt = new Date();
   }
 }
+

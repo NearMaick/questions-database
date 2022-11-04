@@ -14,10 +14,14 @@ describe("Questions Use Case", () => {
   it("Should be able a create a new essay question", async () => {
     await expect(
       createQuestion.execute({
+        typeQuestion: "essay",
         description: "Example description",
         answer: "Description answer",
       })
     ).resolves.not.toThrow();
+    expect(inMemoryQuestionsRepository.questions[0].typeQuestion).toEqual(
+      "essay"
+    );
     expect(inMemoryQuestionsRepository.questions[0].description).toEqual(
       "Example description"
     );

@@ -5,6 +5,7 @@ import {
 
 export interface IQuestionsRepository {
   create({
+    typeQuestion,
     answer,
     description,
   }: ICreateQuestionRepositoryDTO): Promise<IQuestionsListDTO>;
