@@ -1,0 +1,13 @@
+{
+  "name": "questions-database",
+  "version": "0.0.1",
+  "description": "API to manage questions",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "NearMaick",
+  "license": "ISC"
+}
+
