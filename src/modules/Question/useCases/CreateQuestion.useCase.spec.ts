@@ -11,7 +11,7 @@ describe("Questions Use Case", () => {
     createQuestion = new CreateQuestionUseCase(inMemoryQuestionsRepository);
   });
 
-  it("Should be able a create a new question", async () => {
+  it("Should be able a create a new essay question", async () => {
     await expect(
       createQuestion.execute({
         description: "Example description",

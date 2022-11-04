@@ -7,11 +7,17 @@ import { IQuestionsRepository } from "../Questions.repository";
 
 export class InMemoryQuestionsRepository implements IQuestionsRepository {
   public questions: Question[] = [];
-  create({
+  async create({
     answer,
     description,
   }: ICreateQuestionRepositoryDTO): Promise<IQuestionsListDTO> {
-    throw new Error("Method not implemented.");
+    const question = new Question();
+    question.description = description;
+    question.answer = answer;
+
+    this.questions.push(question);
+
+    return question;
   }
 }
 
