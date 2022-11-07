@@ -15,7 +15,7 @@ describe("Questions Use Case", () => {
     await expect(
       createQuestion.execute({
         subject: "subject-test",
-        teacher_id: "teacher-test-id",
+        educator_id: "educator-test-id",
         typeQuestion: "essay",
         description: "Example description",
         answer: "Description answer",
@@ -25,8 +25,8 @@ describe("Questions Use Case", () => {
     expect(inMemoryQuestionsRepository.questions[0].typeQuestion).toEqual(
       "essay"
     );
-    expect(inMemoryQuestionsRepository.questions[0].teacher_id).toEqual(
-      "teacher-test-id"
+    expect(inMemoryQuestionsRepository.questions[0].educator_id).toEqual(
+      "educator-test-id"
     );
     expect(inMemoryQuestionsRepository.questions[0].subject).toEqual(
       "subject-test"
@@ -48,7 +48,7 @@ describe("Questions Use Case", () => {
       createQuestion.execute({
         typeQuestion: "multiple-choice",
         subject: "subject-test",
-        teacher_id: "teacher-test-id",
+        educator_id: "educator-test-id",
         description: "Example description",
         answer: ["answer A", "answer B", "answer C", "answer D", "answer E"],
         correct: "answer A",

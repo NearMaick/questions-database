@@ -10,7 +10,7 @@ export class CreateQuestionUseCase {
     description,
     correct,
     subject,
-    teacher_id,
+    educator_id,
   }: IQuestionsCreateDTO): Promise<IQuestionsListDTO> {
     const question = await this.questionsRepository.create({
       typeQuestion,
@@ -18,7 +18,7 @@ export class CreateQuestionUseCase {
       answer,
       correct,
       subject,
-      teacher_id,
+      educator_id,
     });
 
     return question;

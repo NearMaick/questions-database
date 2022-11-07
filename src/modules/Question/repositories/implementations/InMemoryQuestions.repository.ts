@@ -14,7 +14,7 @@ export class InMemoryQuestionsRepository implements IQuestionsRepository {
     description,
     correct,
     subject,
-    teacher_id,
+    educator_id,
   }: ICreateQuestionRepositoryDTO): Promise<IQuestionsListDTO> {
     const question = new Question();
     question.typeQuestion = typeQuestion;
@@ -22,7 +22,7 @@ export class InMemoryQuestionsRepository implements IQuestionsRepository {
     question.answer = answer;
     question.correct = correct;
     question.subject = subject;
-    question.teacher_id = teacher_id;
+    question.educator_id = educator_id;
 
     this.questions.push(question);
 
@@ -38,6 +38,12 @@ export class InMemoryQuestionsRepository implements IQuestionsRepository {
   ): Promise<IQuestionsListDTO[]> {
     return this.questions.filter(
       (question) => question.typeQuestion === typeQuestion
+    );
+  }
+
+  async listByEducatorId(educatorId: string): Promise<IQuestionsListDTO[]> {
+    return this.questions.filter(
+      (question) => question.educator_id === educatorId
     );
   }
 }
