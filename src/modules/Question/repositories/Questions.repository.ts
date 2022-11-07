@@ -9,6 +9,8 @@ export interface IQuestionsRepository {
     answer,
     description,
     correct,
+    subject,
+    teacher_id,
   }: ICreateQuestionRepositoryDTO): Promise<IQuestionsListDTO>;
 }
 

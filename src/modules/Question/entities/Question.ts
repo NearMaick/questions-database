@@ -3,6 +3,8 @@ import { randomUUID } from "node:crypto";
 export class Question {
   private _id?: string;
   private _typeQuestion: "essay" | "multiple-choice";
+  private _teacher_id: string;
+  private _subject: string;
   private _description: string;
   private _answer: string | string[];
   private _createdAt?: Date;
@@ -28,6 +30,14 @@ export class Question {
     return this._correct;
   }
 
+  public get teacher_id() {
+    return this._teacher_id;
+  }
+
+  public get subject() {
+    return this._subject;
+  }
+
   public get createdAt() {
     return this._createdAt!;
   }
@@ -50,6 +60,14 @@ export class Question {
 
   private set id(value: string) {
     this._id = value;
+  }
+
+  public set teacher_id(value: string) {
+    this._teacher_id = value;
+  }
+
+  public set subject(value: string) {
+    this._subject = value;
   }
 
   private set createdAt(value: Date) {

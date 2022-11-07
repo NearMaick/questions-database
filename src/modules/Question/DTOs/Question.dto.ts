@@ -4,5 +4,6 @@ export type ICreateQuestionRepositoryDTO = Omit<Question, "id" | "createdAt">;
 export type IQuestionsListDTO = Omit<Question, "_description" | "_answer">;
 export type IQuestionsCreateDTO = Omit<
   Question,
-  "_description" | "_answer" | "id" | "createdAt"
+  "_description" | "_answer" | "_teacher_id" | "_subject" | "id" | "createdAt"
 >;
+

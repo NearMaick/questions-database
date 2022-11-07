@@ -13,12 +13,16 @@ export class InMemoryQuestionsRepository implements IQuestionsRepository {
     answer,
     description,
     correct,
+    subject,
+    teacher_id,
   }: ICreateQuestionRepositoryDTO): Promise<IQuestionsListDTO> {
     const question = new Question();
     question.typeQuestion = typeQuestion;
     question.description = description;
     question.answer = answer;
     question.correct = correct;
+    question.subject = subject;
+    question.teacher_id = teacher_id;
 
     this.questions.push(question);
 
