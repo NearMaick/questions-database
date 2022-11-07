@@ -13,5 +13,8 @@ export interface IQuestionsRepository {
     teacher_id,
   }: ICreateQuestionRepositoryDTO): Promise<IQuestionsListDTO>;
   listBySubject(subject: string): Promise<IQuestionsListDTO[]>;
+  listByTypeQuestion(
+    typeQuestion: "essay" | "multiple-choice"
+  ): Promise<IQuestionsListDTO[]>;
 }
 

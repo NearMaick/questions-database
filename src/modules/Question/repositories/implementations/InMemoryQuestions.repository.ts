@@ -32,5 +32,13 @@ export class InMemoryQuestionsRepository implements IQuestionsRepository {
   async listBySubject(subject: string): Promise<IQuestionsListDTO[]> {
     return this.questions.filter((question) => question.subject === subject);
   }
+
+  async listByTypeQuestion(
+    typeQuestion: "essay" | "multiple-choice"
+  ): Promise<IQuestionsListDTO[]> {
+    return this.questions.filter(
+      (question) => question.typeQuestion === typeQuestion
+    );
+  }
 }
 

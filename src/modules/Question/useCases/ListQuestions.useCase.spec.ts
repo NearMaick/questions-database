@@ -2,15 +2,20 @@ import { beforeAll, describe, expect, it } from "vitest";
 import { InMemoryQuestionsRepository } from "../repositories/implementations/InMemoryQuestions.repository";
 import { CreateQuestionUseCase } from "./CreateQuestion.useCase";
 import { ListQuestionsBySubject } from "./ListQuestionsBySubject.useCase";
+import { ListQuestionsByTypeQuestion } from "./ListQuestionsByTypeQuestion.useCase";
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository;
 let createQuestion: CreateQuestionUseCase;
 let listQuestionsBySubject: ListQuestionsBySubject;
+let listQuestionsByTypeQuestion: ListQuestionsByTypeQuestion;
 
 beforeAll(async () => {
   inMemoryQuestionsRepository = new InMemoryQuestionsRepository();
   createQuestion = new CreateQuestionUseCase(inMemoryQuestionsRepository);
   listQuestionsBySubject = new ListQuestionsBySubject(
+    inMemoryQuestionsRepository
+  );
+  listQuestionsByTypeQuestion = new ListQuestionsByTypeQuestion(
     inMemoryQuestionsRepository
   );
 
@@ -65,7 +70,20 @@ describe("Questions Use Case", () => {
     ).toEqual(3);
   });
 
-  it.todo("should be able to list questions by question type");
+  it("should be able to list questions by question type", async () => {
+    const typeQuestionStub = "essay";
+
+    const QuestionsByTypeQuestion = await listQuestionsByTypeQuestion.execute(
+      typeQuestionStub
+    );
+
+    expect(
+      QuestionsByTypeQuestion.filter(
+        (question) => question.typeQuestion === typeQuestionStub
+      ).length
+    ).toEqual(2);
+  });
+
   it.todo("should be able to list questions by teacher id");
 });
 
