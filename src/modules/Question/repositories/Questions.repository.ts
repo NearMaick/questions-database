@@ -12,5 +12,6 @@ export interface IQuestionsRepository {
     subject,
     teacher_id,
   }: ICreateQuestionRepositoryDTO): Promise<IQuestionsListDTO>;
+  listBySubject(subject: string): Promise<IQuestionsListDTO[]>;
 }
 
