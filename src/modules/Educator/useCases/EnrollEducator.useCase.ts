@@ -8,6 +8,12 @@ export class EnrollEducatorUseCase {
     name,
     course,
   }: IEducatorsCreateDTO): Promise<IEducatorsListDTO> {
+    const educatorExists = await this.educatorsRepository.listByName(name);
+
+    if (educatorExists) {
+      throw new Error("This educator exists in the database!");
+    }
+
     const question = await this.educatorsRepository.create({
       name,
       course,

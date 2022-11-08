@@ -9,8 +9,8 @@ export interface IEducatorsRepository {
     name,
     course,
   }: ICreateEducatorRepositoryDTO): Promise<IEducatorsListDTO>;
-  listAll(): Promise<IEducatorsListDTO[]>;
-  listByName(name: string): Promise<IEducatorsListDTO>;
+
+  listByName(name: string): Promise<IEducatorsListDTO | undefined>;
   update(id: string, data: Educator): Promise<IEducatorsListDTO>;
   delete(id: string): Promise<void>;
 }

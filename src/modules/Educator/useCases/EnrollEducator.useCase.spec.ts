@@ -23,7 +23,21 @@ describe("Enroll educator", () => {
       "Course test"
     );
   });
-  it.todo("should not be able to Enroll a same educator");
+
+  it("should not be able to Enroll a same educator", async () => {
+    await enrollEducator.execute({
+      name: "John Doe",
+      course: "Course test",
+    });
+
+    await expect(
+      enrollEducator.execute({
+        name: "John Doe",
+        course: "Course test",
+      })
+    ).rejects.toEqual(new Error("This educator exists in the database!"));
+  });
+
   it.todo("should be able to edit a educator");
   it.todo("should be able to delete a educator");
 });

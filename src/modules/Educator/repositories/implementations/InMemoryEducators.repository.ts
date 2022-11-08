@@ -20,11 +20,9 @@ export class InMemoryEducatorsRepository implements IEducatorsRepository {
 
     return educator;
   }
-  listAll(): Promise<IEducatorsListDTO[]> {
-    throw new Error("Method not implemented.");
-  }
-  listByName(name: string): Promise<IEducatorsListDTO> {
-    throw new Error("Method not implemented.");
+
+  async listByName(name: string): Promise<IEducatorsListDTO | undefined> {
+    return this.educators.find((educator) => educator.name === name);
   }
   update(id: string, data: Educator): Promise<IEducatorsListDTO> {
     throw new Error("Method not implemented.");
