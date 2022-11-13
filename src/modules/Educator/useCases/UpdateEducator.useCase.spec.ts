@@ -1,16 +1,16 @@
 import { beforeEach, expect, it } from "vitest";
 import { InMemoryEducatorsRepository } from "../repositories/implementations/InMemoryEducators.repository";
 import { EnrollEducatorUseCase } from "./EnrollEducator.useCase";
-import { UpdateEducator } from "./UpdateEducator.useCase";
+import { UpdateEducatorUseCase } from "./UpdateEducator.useCase";
 
 let inMemoryEducatorsRepository: InMemoryEducatorsRepository;
 let enrollEducator: EnrollEducatorUseCase;
-let updateEducator: UpdateEducator;
+let updateEducator: UpdateEducatorUseCase;
 
 beforeEach(() => {
   inMemoryEducatorsRepository = new InMemoryEducatorsRepository();
   enrollEducator = new EnrollEducatorUseCase(inMemoryEducatorsRepository);
-  updateEducator = new UpdateEducator(inMemoryEducatorsRepository);
+  updateEducator = new UpdateEducatorUseCase(inMemoryEducatorsRepository);
 });
 
 it("should be able to edit a educator", async () => {
@@ -28,4 +28,3 @@ it("should be able to edit a educator", async () => {
 
   expect(inMemoryEducatorsRepository.educators[0].name).toEqual("Mary Jane");
 });
-

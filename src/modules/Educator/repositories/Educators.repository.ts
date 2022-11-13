@@ -11,7 +11,8 @@ export interface IEducatorsRepository {
   }: ICreateEducatorRepositoryDTO): Promise<IEducatorsListDTO>;
 
   listByName(name: string): Promise<IEducatorsListDTO | undefined>;
+
   update(id: string, data: IEducatorsCreateDTO): Promise<IEducatorsListDTO>;
+
   delete(id: string): Promise<void>;
 }
-
