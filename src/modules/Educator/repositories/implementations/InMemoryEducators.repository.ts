@@ -39,7 +39,9 @@ export class InMemoryEducatorsRepository implements IEducatorsRepository {
     return educator[0];
   }
 
-  delete(id: string): Promise<void> {
-    throw new Error("Method not implemented.");
+  async delete(id: string): Promise<void> {
+    const index = this.educators.findIndex((educator) => educator.id === id);
+
+    this.educators.splice(index, 1);
   }
 }
