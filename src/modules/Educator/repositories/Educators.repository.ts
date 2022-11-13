@@ -1,8 +1,8 @@
 import {
   ICreateEducatorRepositoryDTO,
+  IEducatorsCreateDTO,
   IEducatorsListDTO,
 } from "../DTOs/Educator.dto";
-import { Educator } from "../entities/Educator";
 
 export interface IEducatorsRepository {
   create({
@@ -11,7 +11,7 @@ export interface IEducatorsRepository {
   }: ICreateEducatorRepositoryDTO): Promise<IEducatorsListDTO>;
 
   listByName(name: string): Promise<IEducatorsListDTO | undefined>;
-  update(id: string, data: Educator): Promise<IEducatorsListDTO>;
+  update(id: string, data: IEducatorsCreateDTO): Promise<IEducatorsListDTO>;
   delete(id: string): Promise<void>;
 }
 
