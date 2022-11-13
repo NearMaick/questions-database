@@ -8,6 +8,8 @@
   },
   "keywords": [],
   "author": "NearMaick",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "vitest": "^0.25.1"
+  }
 }
-

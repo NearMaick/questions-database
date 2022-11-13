@@ -25,12 +25,21 @@ export class InMemoryEducatorsRepository implements IEducatorsRepository {
     return this.educators.find((educator) => educator.name === name);
   }
 
-  update(id: string, data: Educator): Promise<IEducatorsListDTO> {
-    throw new Error("Method not implemented.");
+  async update(
+    id: string,
+    { name, course }: ICreateEducatorRepositoryDTO
+  ): Promise<IEducatorsListDTO> {
+    const index = this.educators.findIndex((educator) => educator.id === id);
+
+    const educator = this.educators.splice(index, 1, {
+      name,
+      course,
+    } as Educator);
+
+    return educator[0];
   }
 
   delete(id: string): Promise<void> {
     throw new Error("Method not implemented.");
   }
 }
-
