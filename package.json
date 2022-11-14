@@ -4,19 +4,23 @@
   "description": "API to manage questions",
   "main": "index.js",
   "scripts": {
-    "test": "vitest"
+    "test": "vitest",
+    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/http/server.ts"
   },
   "keywords": [],
   "author": "NearMaick",
   "license": "ISC",
   "devDependencies": {
+    "@types/express": "^4.17.14",
     "@types/node": "^18.11.9",
     "prisma": "^4.6.1",
     "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^4.8.4",
     "vitest": "^0.25.1"
   },
   "dependencies": {
-    "@prisma/client": "^4.6.1"
+    "@prisma/client": "^4.6.1",
+    "express": "^4.18.2"
   }
 }

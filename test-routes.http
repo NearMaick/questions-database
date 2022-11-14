@@ -1,0 +1,18 @@
+GET http://localhost:3333/questions/list-by-type-question/MULTIPLE_CHOICE
+
+###
+GET http://localhost:3333/questions/list-by-type-question/ESSAY
+
+###
+GET http://localhost:3000/tweets/634586dbcef12dae83f3bde3
+
+
+
+###
+POST http://localhost:3000/api/createStudentController
+Content-Type: application/json
+
+{
+    "name": "Maick Teste",
+    "email": "teste@maick.com"
+}
