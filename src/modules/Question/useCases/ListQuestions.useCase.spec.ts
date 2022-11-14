@@ -10,6 +10,7 @@ let createQuestion: CreateQuestionUseCase;
 let listQuestionsBySubject: ListQuestionsBySubject;
 let listQuestionsByTypeQuestion: ListQuestionsByTypeQuestion;
 let listQuestionsByEducatorId: ListQuestionsByEducatorId;
+
 beforeAll(async () => {
   inMemoryQuestionsRepository = new InMemoryQuestionsRepository();
   createQuestion = new CreateQuestionUseCase(inMemoryQuestionsRepository);
@@ -26,23 +27,23 @@ beforeAll(async () => {
   await createQuestion.execute({
     subject: "portuguese",
     educator_id: "01-test-id",
-    typeQuestion: "essay",
+    typeQuestion: "ESSAY",
     description: "Example description",
-    answer: "Description answer",
-    correct: undefined,
+    answer: ["Description answer"],
+    correct: "Description answer",
   });
 
   await createQuestion.execute({
     subject: "portuguese",
     educator_id: "02-educator-id",
-    typeQuestion: "essay",
+    typeQuestion: "ESSAY",
     description: "Example description two",
-    answer: "Description answer two",
-    correct: undefined,
+    answer: ["Description answer two"],
+    correct: "Description answer two",
   });
 
   await createQuestion.execute({
-    typeQuestion: "multiple-choice",
+    typeQuestion: "MULTIPLE_CHOICE",
     subject: "portuguese",
     educator_id: "02-educator-id",
     description: "Example description",
@@ -51,7 +52,7 @@ beforeAll(async () => {
   });
 
   await createQuestion.execute({
-    typeQuestion: "multiple-choice",
+    typeQuestion: "MULTIPLE_CHOICE",
     subject: "mathematics",
     educator_id: "01-educator-id",
     description: "Example description",
@@ -75,7 +76,7 @@ describe("Questions Use Case", () => {
   });
 
   it("should be able to list questions by question type", async () => {
-    const typeQuestionStub = "essay";
+    const typeQuestionStub = "ESSAY";
 
     const QuestionsByTypeQuestion = await listQuestionsByTypeQuestion.execute(
       typeQuestionStub

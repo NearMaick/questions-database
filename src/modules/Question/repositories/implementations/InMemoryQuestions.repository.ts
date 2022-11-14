@@ -34,7 +34,7 @@ export class InMemoryQuestionsRepository implements IQuestionsRepository {
   }
 
   async listByTypeQuestion(
-    typeQuestion: "essay" | "multiple-choice"
+    typeQuestion: "ESSAY" | "MULTIPLE_CHOICE"
   ): Promise<IQuestionsListDTO[]> {
     return this.questions.filter(
       (question) => question.typeQuestion === typeQuestion

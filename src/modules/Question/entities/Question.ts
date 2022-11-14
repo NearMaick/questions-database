@@ -1,13 +1,13 @@
 import { randomUUID } from "node:crypto";
 
 export class Question {
-  private _id!: string;
+  private _id: string;
   private _typeQuestion!: "ESSAY" | "MULTIPLE_CHOICE";
   private _educator_id!: string;
   private _subject!: string;
   private _description!: string;
   private _answer!: string[];
-  private _createdAt!: Date;
+  private _createdAt: Date;
   private _correct!: string;
 
   public get id() {
