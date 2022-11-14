@@ -1,14 +1,14 @@
 import { randomUUID } from "node:crypto";
 
 export class Educator {
-  private _id?: string;
-  private _name: string;
-  private _course: string;
-  private _createdAt?: Date;
-  private _updatedAt?: Date;
+  private _id!: string;
+  private _name!: string;
+  private _course!: string;
+  private _createdAt!: Date;
+  private _updatedAt!: Date;
 
   public get id() {
-    return this._id!;
+    return this._id;
   }
 
   public get name() {
@@ -20,11 +20,11 @@ export class Educator {
   }
 
   public get createdAt() {
-    return this._createdAt!;
+    return this._createdAt;
   }
 
   public get updatedAt() {
-    return this._updatedAt!;
+    return this._updatedAt;
   }
 
   public set name(value: string) {

@@ -1,17 +1,17 @@
 import { randomUUID } from "node:crypto";
 
 export class Question {
-  private _id?: string;
-  private _typeQuestion: "essay" | "multiple-choice";
-  private _educator_id: string;
-  private _subject: string;
-  private _description: string;
-  private _answer: string | string[];
-  private _createdAt?: Date;
-  private _correct?: string;
+  private _id!: string;
+  private _typeQuestion!: "ESSAY" | "MULTIPLE_CHOICE";
+  private _educator_id!: string;
+  private _subject!: string;
+  private _description!: string;
+  private _answer!: string[];
+  private _createdAt!: Date;
+  private _correct!: string;
 
   public get id() {
-    return this._id!;
+    return this._id;
   }
 
   public get typeQuestion() {
@@ -39,10 +39,10 @@ export class Question {
   }
 
   public get createdAt() {
-    return this._createdAt!;
+    return this._createdAt;
   }
 
-  public set typeQuestion(value: "essay" | "multiple-choice") {
+  public set typeQuestion(value: "ESSAY" | "MULTIPLE_CHOICE") {
     this._typeQuestion = value;
   }
 
@@ -50,11 +50,11 @@ export class Question {
     this._description = value;
   }
 
-  public set answer(value: string | string[]) {
+  public set answer(value: string[]) {
     this._answer = value;
   }
 
-  public set correct(value: string | undefined) {
+  public set correct(value: string) {
     this._correct = value;
   }
 

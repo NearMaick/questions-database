@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum TypeQuestion {
+  ESSAY
+  MULTIPLE_CHOICE
+}
+
+model Question {
+  id            String       @id @default(uuid())
+  type_question TypeQuestion
+  subject       String       @unique
+  description   String
+  answer        String[]
+  correct       String
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime
+}
