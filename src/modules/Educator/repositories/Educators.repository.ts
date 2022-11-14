@@ -10,9 +10,10 @@ export interface IEducatorsRepository {
     course,
   }: ICreateEducatorRepositoryDTO): Promise<IEducatorsListDTO>;
 
-  listByName(name: string): Promise<IEducatorsListDTO | undefined>;
+  listByName(name: string): Promise<IEducatorsListDTO | null | undefined>;
 
   update(id: string, data: IEducatorsCreateDTO): Promise<IEducatorsListDTO>;
 
   delete(id: string): Promise<void>;
 }
+

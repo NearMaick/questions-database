@@ -21,7 +21,9 @@ export class InMemoryEducatorsRepository implements IEducatorsRepository {
     return educator;
   }
 
-  async listByName(name: string): Promise<IEducatorsListDTO | undefined> {
+  async listByName(
+    name: string
+  ): Promise<IEducatorsListDTO | null | undefined> {
     return this.educators.find((educator) => educator.name === name);
   }
 
@@ -45,3 +47,4 @@ export class InMemoryEducatorsRepository implements IEducatorsRepository {
     this.educators.splice(index, 1);
   }
 }
+

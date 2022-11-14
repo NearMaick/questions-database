@@ -9,10 +9,10 @@ GET http://localhost:3000/tweets/634586dbcef12dae83f3bde3
 
 
 ###
-POST http://localhost:3000/api/createStudentController
+POST http://localhost:3333/educators/enroll
 Content-Type: application/json
 
 {
     "name": "Maick Teste",
-    "email": "teste@maick.com"
+    "course": "Matéria de teste"
 }
