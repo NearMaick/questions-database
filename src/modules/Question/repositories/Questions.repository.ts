@@ -1,6 +1,7 @@
 import {
   ICreateQuestionRepositoryDTO,
   IQuestionsListDTO,
+  IQuestionType,
 } from "../DTOs/Question.dto";
 
 export interface IQuestionsRepository {
@@ -13,9 +14,7 @@ export interface IQuestionsRepository {
     educator_id,
   }: ICreateQuestionRepositoryDTO): Promise<IQuestionsListDTO>;
   listBySubject(subject: string): Promise<IQuestionsListDTO[]>;
-  listByTypeQuestion(
-    typeQuestion: "ESSAY" | "MULTIPLE_CHOICE"
-  ): Promise<IQuestionsListDTO[]>;
+  listByTypeQuestion(typeQuestion: IQuestionType): Promise<IQuestionsListDTO[]>;
   listByEducatorId(educatorId: string): Promise<IQuestionsListDTO[]>;
 }
 

@@ -1,6 +1,7 @@
 import {
   ICreateQuestionRepositoryDTO,
   IQuestionsListDTO,
+  IQuestionType,
 } from "../../DTOs/Question.dto";
 import { Question } from "../../entities/Question";
 import { IQuestionsRepository } from "../Questions.repository";
@@ -34,7 +35,7 @@ export class InMemoryQuestionsRepository implements IQuestionsRepository {
   }
 
   async listByTypeQuestion(
-    typeQuestion: "ESSAY" | "MULTIPLE_CHOICE"
+    typeQuestion: IQuestionType
   ): Promise<IQuestionsListDTO[]> {
     return this.questions.filter(
       (question) => question.typeQuestion === typeQuestion

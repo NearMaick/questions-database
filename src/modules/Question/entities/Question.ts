@@ -1,8 +1,9 @@
 import { randomUUID } from "node:crypto";
+import { IQuestionType } from "../DTOs/Question.dto";
 
 export class Question {
   private _id: string;
-  private _typeQuestion!: "ESSAY" | "MULTIPLE_CHOICE";
+  private _typeQuestion!: IQuestionType;
   private _educator_id!: string;
   private _subject!: string;
   private _description!: string;
@@ -42,7 +43,7 @@ export class Question {
     return this._createdAt;
   }
 
-  public set typeQuestion(value: "ESSAY" | "MULTIPLE_CHOICE") {
+  public set typeQuestion(value: IQuestionType) {
     this._typeQuestion = value;
   }
 

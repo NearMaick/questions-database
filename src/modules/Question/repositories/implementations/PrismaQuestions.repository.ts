@@ -2,6 +2,7 @@ import { prismaClient } from "../../../../shared/prisma";
 import {
   ICreateQuestionRepositoryDTO,
   IQuestionsListDTO,
+  IQuestionType,
 } from "../../DTOs/Question.dto";
 import { IQuestionsRepository } from "../Questions.repository";
 
@@ -21,9 +22,7 @@ export class PrismaQuestionsRepository implements IQuestionsRepository {
     throw new Error("Method not implemented.");
   }
 
-  async listByTypeQuestion(
-    typeQuestion: "ESSAY" | "MULTIPLE_CHOICE"
-  ): Promise<any[]> {
+  async listByTypeQuestion(typeQuestion: IQuestionType): Promise<any[]> {
     return prismaClient.question.findMany({
       where: {
         type_question: typeQuestion,

@@ -1,9 +1,10 @@
+import { IQuestionType } from "../DTOs/Question.dto";
 import { IQuestionsRepository } from "../repositories/Questions.repository";
 
 export class ListQuestionsByTypeQuestion {
   constructor(private questionsRepository: IQuestionsRepository) {}
 
-  async execute(typeQuestion: "ESSAY" | "MULTIPLE_CHOICE") {
+  async execute(typeQuestion: IQuestionType) {
     return this.questionsRepository.listByTypeQuestion(typeQuestion);
   }
 }

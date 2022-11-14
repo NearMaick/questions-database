@@ -6,4 +6,5 @@ export type IQuestionsCreateDTO = Omit<
   Question,
   "_description" | "_answer" | "_educator_id" | "_subject" | "id" | "createdAt"
 >;
+export type IQuestionType = "ESSAY" | "MULTIPLE_CHOICE";
 
