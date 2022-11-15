@@ -13,7 +13,7 @@ beforeEach(() => {
   deleteEducator = new DeleteEducatorUseCase(inMemoryEducatorsRepository);
 });
 
-it("should be able to edit a educator", async () => {
+it("should be able to delete a educator", async () => {
   const { name } = await enrollEducator.execute({
     name: "John Doe",
     course: "Course test",
@@ -25,3 +25,4 @@ it("should be able to edit a educator", async () => {
 
   expect(inMemoryEducatorsRepository.educators).toEqual([]);
 });
+

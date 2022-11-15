@@ -37,7 +37,5 @@ describe("Enroll educator", () => {
       })
     ).rejects.toEqual(new Error("This educator exists in the database!"));
   });
-
-  it.todo("should be able to delete a educator");
 });
 
