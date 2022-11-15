@@ -35,9 +35,21 @@ export class PrismaEducatorRepository implements IEducatorsRepository {
     return prismaClient.educator.findMany();
   }
 
-  update(id: string, data: IEducatorsCreateDTO): Promise<IEducatorsListDTO> {
-    throw new Error("Method not implemented.");
+  async update(
+    id: string,
+    { name, course }: IEducatorsCreateDTO
+  ): Promise<IEducatorsListDTO> {
+    return prismaClient.educator.update({
+      where: {
+        id,
+      },
+      data: {
+        name,
+        course,
+      },
+    });
   }
+
   delete(id: string): Promise<void> {
     throw new Error("Method not implemented.");
   }

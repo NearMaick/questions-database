@@ -5,9 +5,10 @@ export class UpdateEducatorUseCase {
   constructor(private educatorsRepository: IEducatorsRepository) {}
 
   async execute(id: string, { name, course }: IEducatorsCreateDTO) {
-    this.educatorsRepository.update(id, {
+    return this.educatorsRepository.update(id, {
       name,
       course,
     });
   }
 }
+

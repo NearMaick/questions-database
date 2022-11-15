@@ -17,3 +17,12 @@ Content-Type: application/json
     "name": "Maick Outro Teste",
     "course": "Cálculo discreto"
 }
+
+###
+PUT http://localhost:3333/educators/update/710df79f-87cc-4ec1-8af5-f69f7402f33a
+Content-Type: application/json
+
+{
+    "name": "Maick Souza",
+    "course": "NodeJs"
+}
