@@ -1,3 +1,4 @@
+###
 GET http://localhost:3333/questions/list-by-type-question/MULTIPLE_CHOICE
 
 ###
@@ -26,3 +27,7 @@ Content-Type: application/json
     "name": "Maick Souza",
     "course": "NodeJs"
 }
+
+###
+DELETE http://localhost:3333/educators/delete/cd8ad39e-c44a-420a-8396-e8b4e021d683
+

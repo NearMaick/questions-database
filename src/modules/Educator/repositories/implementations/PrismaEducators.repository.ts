@@ -50,8 +50,12 @@ export class PrismaEducatorRepository implements IEducatorsRepository {
     });
   }
 
-  delete(id: string): Promise<void> {
-    throw new Error("Method not implemented.");
+  async delete(id: string): Promise<void> {
+    await prismaClient.educator.delete({
+      where: {
+        id,
+      },
+    });
   }
 }
 

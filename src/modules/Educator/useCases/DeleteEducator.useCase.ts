@@ -7,3 +7,4 @@ export class DeleteEducatorUseCase {
     return this.educatorsRepository.delete(id);
   }
 }
+
