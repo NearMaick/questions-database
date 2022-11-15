@@ -12,6 +12,8 @@ export interface IEducatorsRepository {
 
   listByName(name: string): Promise<IEducatorsListDTO | null | undefined>;
 
+  listAll(): Promise<IEducatorsListDTO[]>;
+
   update(id: string, data: IEducatorsCreateDTO): Promise<IEducatorsListDTO>;
 
   delete(id: string): Promise<void>;

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest",
-    "dev": "ts-node-dev --inspect --transpile-only --respawn src/shared/http/server.ts"
+    "dev": "ts-node-dev --inspect --transpile-only --exit-child --watch src/ --respawn src/shared/http/server.ts"
   },
   "keywords": [],
   "author": "NearMaick",

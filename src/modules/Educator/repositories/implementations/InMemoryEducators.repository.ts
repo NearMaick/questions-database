@@ -27,6 +27,10 @@ export class InMemoryEducatorsRepository implements IEducatorsRepository {
     return this.educators.find((educator) => educator.name === name);
   }
 
+  async listAll(): Promise<IEducatorsListDTO[]> {
+    return this.educators;
+  }
+
   async update(
     id: string,
     { name, course }: ICreateEducatorRepositoryDTO
