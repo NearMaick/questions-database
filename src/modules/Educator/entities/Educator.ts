@@ -43,7 +43,7 @@ export class Educator {
     this._createdAt = value;
   }
 
-  private set updatedAt(value: Date) {
+  public set updatedAt(value: Date) {
     this._updatedAt = value;
   }
 

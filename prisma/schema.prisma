@@ -28,7 +28,7 @@ model Question {
   description   String
   answer        String[]
   correct       String
-  createdAt     DateTime     @default(now())
+  createdAt     DateTime
   updatedAt     DateTime     @default(now())
   educator      Educator     @relation(fields: [educator_id], references: [id])
 }
