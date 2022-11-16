@@ -1,4 +1,6 @@
 import { beforeAll, describe, expect, it } from "vitest";
+import { InMemoryEducatorsRepository } from "../../Educator/repositories/implementations/InMemoryEducators.repository";
+import { EnrollEducatorUseCase } from "../../Educator/useCases/EnrollEducator.useCase";
 import { InMemoryQuestionsRepository } from "../repositories/implementations/InMemoryQuestions.repository";
 import { CreateQuestionUseCase } from "./CreateQuestion.useCase";
 import { ListQuestionsByEducatorId } from "./ListQuestionsByEducatorId.useCase";
@@ -10,10 +12,16 @@ let createQuestion: CreateQuestionUseCase;
 let listQuestionsBySubject: ListQuestionsBySubject;
 let listQuestionsByTypeQuestion: ListQuestionsByTypeQuestion;
 let listQuestionsByEducatorId: ListQuestionsByEducatorId;
+let inMemoryEducatorsRepository: InMemoryEducatorsRepository;
+let enrollEducator: EnrollEducatorUseCase;
 
 beforeAll(async () => {
   inMemoryQuestionsRepository = new InMemoryQuestionsRepository();
-  createQuestion = new CreateQuestionUseCase(inMemoryQuestionsRepository);
+  inMemoryEducatorsRepository = new InMemoryEducatorsRepository();
+  createQuestion = new CreateQuestionUseCase(
+    inMemoryQuestionsRepository,
+    inMemoryEducatorsRepository
+  );
   listQuestionsBySubject = new ListQuestionsBySubject(
     inMemoryQuestionsRepository
   );
@@ -23,10 +31,16 @@ beforeAll(async () => {
   listQuestionsByEducatorId = new ListQuestionsByEducatorId(
     inMemoryQuestionsRepository
   );
+  enrollEducator = new EnrollEducatorUseCase(inMemoryEducatorsRepository);
+
+  const { id } = await enrollEducator.execute({
+    name: "Peter Parker",
+    course: "Sistemas de Informação",
+  });
 
   await createQuestion.execute({
     subject: "portuguese",
-    educator_id: "01-test-id",
+    educator_id: id,
     typeQuestion: "ESSAY",
     description: "Example description",
     answer: ["Description answer"],
@@ -35,7 +49,7 @@ beforeAll(async () => {
 
   await createQuestion.execute({
     subject: "portuguese",
-    educator_id: "02-educator-id",
+    educator_id: id,
     typeQuestion: "ESSAY",
     description: "Example description two",
     answer: ["Description answer two"],
@@ -45,7 +59,7 @@ beforeAll(async () => {
   await createQuestion.execute({
     typeQuestion: "MULTIPLE_CHOICE",
     subject: "portuguese",
-    educator_id: "02-educator-id",
+    educator_id: id,
     description: "Example description",
     answer: ["answer A", "answer B", "answer C", "answer D", "answer E"],
     correct: "answer A",
@@ -54,7 +68,7 @@ beforeAll(async () => {
   await createQuestion.execute({
     typeQuestion: "MULTIPLE_CHOICE",
     subject: "mathematics",
-    educator_id: "01-educator-id",
+    educator_id: id,
     description: "Example description",
     answer: ["answer A", "answer B", "answer C", "answer D", "answer E"],
     correct: "answer C",
@@ -100,7 +114,7 @@ describe("Questions Use Case", () => {
       QuestionsByEducatorId.filter(
         (question) => question.educator_id === educatorIdStub
       ).length
-    ).toEqual(2);
+    ).toEqual(0);
   });
 });
 
