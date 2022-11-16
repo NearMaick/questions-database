@@ -1,12 +1,14 @@
 import { beforeAll, describe, expect, it } from "vitest";
 import { InMemoryEducatorsRepository } from "../repositories/implementations/InMemoryEducators.repository";
 import { EnrollEducatorUseCase } from "./EnrollEducator.useCase";
-import { ListAllEducators } from "./ListAllEducators.useCase";
+import { ListEducatorByName } from "./ListEducatorByName.useCase";
 
-describe("List all educators", async () => {
+describe("List educator by name", async () => {
   const inMemoryEducatorsRepository = new InMemoryEducatorsRepository();
   const enrollEducator = new EnrollEducatorUseCase(inMemoryEducatorsRepository);
-  const listAllEducators = new ListAllEducators(inMemoryEducatorsRepository);
+  const listEducatorByName = new ListEducatorByName(
+    inMemoryEducatorsRepository
+  );
 
   beforeAll(async () => {
     await enrollEducator.execute({
@@ -18,16 +20,17 @@ describe("List all educators", async () => {
       name: "Peter Parker",
       course: "Empreendedorismo",
     });
+
+    await enrollEducator.execute({
+      name: "John Doe",
+      course: "Empreendedorismo",
+    });
   });
 
-  it("should be able to list educators", async () => {
-    const educator = await enrollEducator.execute({
-      name: "John Doe",
-      course: "Inteligência artificial",
-    });
+  it("should br able to list an educator by name", async () => {
+    const educator = await listEducatorByName.execute("Peter Parker");
 
-    const educators = await listAllEducators.execute();
-    expect(educators[2]).toEqual(educator);
+    expect(educator?.name).toBe("Peter Parker");
   });
 });
 
