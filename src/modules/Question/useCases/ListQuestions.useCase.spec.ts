@@ -96,11 +96,7 @@ describe("Questions Use Case", () => {
       typeQuestionStub
     );
 
-    expect(
-      questionsByTypeQuestion.filter(
-        (question) => question.typeQuestion === typeQuestionStub
-      ).length
-    ).toEqual(2);
+    expect(questionsByTypeQuestion.length).toEqual(2);
   });
 
   it("should be able to not listing questions by educator id", async () => {
