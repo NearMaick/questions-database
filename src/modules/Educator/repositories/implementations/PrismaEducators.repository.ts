@@ -31,8 +31,12 @@ export class PrismaEducatorRepository implements IEducatorsRepository {
     return educator;
   }
 
-  listById(id: string): Promise<IEducatorsListDTO | null | undefined> {
-    throw new Error("Method not implemented.");
+  async listById(id: string): Promise<IEducatorsListDTO | null | undefined> {
+    return prismaClient.educator.findFirst({
+      where: {
+        id,
+      },
+    });
   }
 
   async listAll(): Promise<IEducatorsListDTO[]> {

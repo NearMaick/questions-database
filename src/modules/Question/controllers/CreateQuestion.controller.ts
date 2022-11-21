@@ -12,8 +12,7 @@ const createQuestion = new CreateQuestionUseCase(
 
 export class CreateQuestionController {
   async handle(request: Request, response: Response) {
-    const educatorId = "710df79f-87cc-4ec1-8af5-f69f7402f33a";
-    // const {educatorId} = request.params
+    const educator_id = "710df79f-87cc-4ec1-8af5-f69f7402f33a";
     const {
       type_question,
       subject,
@@ -27,43 +26,29 @@ export class CreateQuestionController {
       correct,
     } = request.body;
 
+    let educator;
+
     if (essay_answer === undefined) {
-      console.log("choice");
-      // console.log({
-      //   educator_id: educatorId,
-      //   type_question,
-      //   subject,
-      //   description,
-      //   choice_01,
-      //   choice_02,
-      //   choice_03,
-      //   choice_04,
-      //   choice_05,
-      //   correct,
-      // });
+      educator = await createQuestion.execute({
+        answer: [choice_01, choice_02, choice_03, choice_04, choice_05],
+        correct,
+        description,
+        educator_id,
+        subject,
+        typeQuestion: type_question,
+      });
     } else {
-      console.log("essay");
-      // console.log({
-      //   educator_id: educatorId,
-      //   type_question,
-      //   subject,
-      //   description,
-      //   essay_answer,
-      // });
+      educator = await createQuestion.execute({
+        answer: essay_answer,
+        correct: essay_answer,
+        description,
+        educator_id,
+        subject,
+        typeQuestion: type_question,
+      });
     }
 
-    response.status(200).json({
-      type_question,
-      subject,
-      description,
-      essay_answer,
-      choice_01,
-      choice_02,
-      choice_03,
-      choice_04,
-      choice_05,
-      correct,
-    });
+    response.status(200).json(educator);
   }
 }
 

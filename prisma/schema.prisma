@@ -21,16 +21,16 @@ enum TypeQuestion {
 }
 
 model Question {
-  id            String       @id @default(uuid())
-  educator_id   String
-  type_question TypeQuestion
-  subject       String       @unique
-  description   String
-  answer        String[]
-  correct       String
-  createdAt     DateTime
-  updatedAt     DateTime     @default(now())
-  educator      Educator     @relation(fields: [educator_id], references: [id])
+  id           String       @id @default(uuid())
+  educator_id  String
+  typeQuestion TypeQuestion
+  subject      String       @unique
+  description  String
+  answer       String[]
+  correct      String
+  createdAt    DateTime
+  updatedAt    DateTime     @default(now())
+  educator     Educator     @relation(fields: [educator_id], references: [id])
 }
 
 model Educator {

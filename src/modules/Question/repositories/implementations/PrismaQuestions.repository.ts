@@ -7,7 +7,7 @@ import {
 import { IQuestionsRepository } from "../Questions.repository";
 
 export class PrismaQuestionsRepository implements IQuestionsRepository {
-  create({
+  async create({
     typeQuestion,
     answer,
     description,
@@ -15,7 +15,19 @@ export class PrismaQuestionsRepository implements IQuestionsRepository {
     subject,
     educator_id,
   }: ICreateQuestionRepositoryDTO): Promise<IQuestionsListDTO> {
-    throw new Error("Method not implemented.");
+    const question = await prismaClient.question.create({
+      data: {
+        typeQuestion,
+        answer,
+        description,
+        subject,
+        educator_id,
+        correct,
+        createdAt: new Date(),
+      },
+    });
+
+    return question;
   }
 
   listBySubject(subject: string): Promise<IQuestionsListDTO[]> {
@@ -25,7 +37,7 @@ export class PrismaQuestionsRepository implements IQuestionsRepository {
   async listByTypeQuestion(typeQuestion: IQuestionType): Promise<any[]> {
     return prismaClient.question.findMany({
       where: {
-        type_question: typeQuestion,
+        typeQuestion,
       },
     });
   }
