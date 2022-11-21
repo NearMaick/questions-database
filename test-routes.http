@@ -20,6 +20,23 @@ Content-Type: application/json
 }
 
 ###
+POST http://localhost:3333/questions/create
+Content-Type: application/json
+
+{
+    "type_question": "",
+      "subject": "",
+      "description": "",
+      "essay_answer": "",
+      "choice_01": "",
+      "choice_02": "",
+      "choice_03": "",
+      "choice_04": "",
+      "choice_05": "",
+      "correct": ""
+}
+
+###
 PUT http://localhost:3333/educators/update/710df79f-87cc-4ec1-8af5-f69f7402f33a
 Content-Type: application/json
 
