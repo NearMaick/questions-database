@@ -16,7 +16,18 @@ Content-Type: application/json
 
 {
     "name": "Maick Outro Teste",
+    "email": "maick@teste.com",
+    "password": "123456",
     "course": "Cálculo discreto"
+}
+
+###
+POST http://localhost:3333/educators/auth
+Content-Type: application/json
+
+{
+    "email": "maick@teste.com",
+    "password": "123456"
 }
 
 ###
@@ -25,15 +36,15 @@ Content-Type: application/json
 
 {
     "type_question": "",
-      "subject": "",
-      "description": "",
-      "essay_answer": "",
-      "choice_01": "",
-      "choice_02": "",
-      "choice_03": "",
-      "choice_04": "",
-      "choice_05": "",
-      "correct": ""
+    "subject": "",
+    "description": "",
+    "essay_answer": "",
+    "choice_01": "",
+    "choice_02": "",
+    "choice_03": "",
+    "choice_04": "",
+    "choice_05": "",
+    "correct": ""
 }
 
 ###

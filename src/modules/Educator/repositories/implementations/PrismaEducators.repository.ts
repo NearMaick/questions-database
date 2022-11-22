@@ -10,11 +10,15 @@ export class PrismaEducatorRepository implements IEducatorsRepository {
   async create({
     name,
     course,
+    email,
+    password,
   }: ICreateEducatorRepositoryDTO): Promise<IEducatorsListDTO> {
     const educator = prismaClient.educator.create({
       data: {
         name,
         course,
+        email,
+        password,
       },
     });
 
@@ -35,6 +39,14 @@ export class PrismaEducatorRepository implements IEducatorsRepository {
     return prismaClient.educator.findFirst({
       where: {
         id,
+      },
+    });
+  }
+
+  listByEmail(email: string): Promise<IEducatorsListDTO | null | undefined> {
+    return prismaClient.educator.findFirst({
+      where: {
+        email,
       },
     });
   }

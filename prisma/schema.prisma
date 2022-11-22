@@ -36,6 +36,8 @@ model Question {
 model Educator {
   id        String     @id @default(uuid())
   name      String
+  email     String
+  password  String
   course    String
   createdAt DateTime   @default(now())
   updatedAt DateTime   @default(now())
