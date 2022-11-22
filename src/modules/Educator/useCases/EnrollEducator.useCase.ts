@@ -30,5 +30,3 @@ export class EnrollEducatorUseCase {
   }
 }
 
-// montar o fluxo de autenticação
-

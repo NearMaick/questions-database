@@ -2,6 +2,10 @@ import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { IEducatorsRepository } from "../repositories/Educators.repository";
 
+interface IAuthenticateRequest {
+  email: string;
+  password: string;
+}
 interface IAuthenticateResponse {
   educator: {
     name?: string;
@@ -13,13 +17,15 @@ interface IAuthenticateResponse {
 export class AuthenticateEducatorUseCase {
   constructor(private educatorsRepository: IEducatorsRepository) {}
 
-  async execute(
-    email: string,
-    password: string
-  ): Promise<IAuthenticateResponse> {
+  async execute({
+    email,
+    password,
+  }: IAuthenticateRequest): Promise<IAuthenticateResponse> {
     const educator = await this.educatorsRepository.listByEmail(email);
 
-    const passwordMatch = await compare(password, educator?.password!);
+    const passwordHash = educator ? educator.password : "";
+
+    const passwordMatch = await compare(password, passwordHash);
 
     if (!passwordMatch) {
       throw new Error("Email or password incorrect!");
