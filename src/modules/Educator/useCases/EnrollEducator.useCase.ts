@@ -8,6 +8,7 @@ export class EnrollEducatorUseCase {
   async execute({
     name,
     course,
+    email,
     password,
   }: IEducatorsCreateDTO): Promise<IEducatorsListDTO> {
     const educatorExists = await this.educatorsRepository.listByName(name);
@@ -21,6 +22,7 @@ export class EnrollEducatorUseCase {
     const question = await this.educatorsRepository.create({
       name,
       course,
+      email,
       password: passwordHash,
     });
 

@@ -13,6 +13,8 @@ export interface IEducatorsRepository {
 
   listByName(name: string): Promise<IEducatorsListDTO | null | undefined>;
 
+  listByEmail(email: string): Promise<IEducatorsListDTO | null | undefined>;
+
   listById(id: string): Promise<IEducatorsListDTO | null | undefined>;
 
   listAll(): Promise<IEducatorsListDTO[]>;

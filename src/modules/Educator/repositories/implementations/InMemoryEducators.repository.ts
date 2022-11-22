@@ -12,10 +12,12 @@ export class InMemoryEducatorsRepository implements IEducatorsRepository {
     name,
     course,
     password,
+    email,
   }: ICreateEducatorRepositoryDTO): Promise<IEducatorsListDTO> {
     const educator = new Educator();
     educator.name = name;
     educator.course = course;
+    educator.email = email;
     educator.password = password;
 
     this.educators.push(educator);
@@ -31,6 +33,12 @@ export class InMemoryEducatorsRepository implements IEducatorsRepository {
 
   async listById(id: string): Promise<IEducatorsListDTO | null | undefined> {
     return this.educators.find((educator) => educator.id === id);
+  }
+
+  async listByEmail(
+    email: string
+  ): Promise<IEducatorsListDTO | null | undefined> {
+    return this.educators.find((educator) => educator.email === email);
   }
 
   async listAll(): Promise<IEducatorsListDTO[]> {

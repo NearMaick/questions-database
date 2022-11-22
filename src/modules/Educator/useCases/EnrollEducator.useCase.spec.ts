@@ -16,6 +16,7 @@ describe("Enroll educator", () => {
     await expect(
       enrollEducator.execute({
         name: "John Doe",
+        email: "test@email.com",
         course: "Course test",
         password: "password-test",
       })
@@ -32,6 +33,7 @@ describe("Enroll educator", () => {
       name: "John Doe",
       course: "Course test",
       password: "password-test",
+      email: "test@email.com",
     });
 
     await expect(
@@ -39,6 +41,7 @@ describe("Enroll educator", () => {
         name: "John Doe",
         course: "Course test",
         password: "password-test",
+        email: "test@email.com",
       })
     ).rejects.toEqual(new Error("This educator exists in the database!"));
   });
@@ -48,6 +51,7 @@ describe("Enroll educator", () => {
       name: "John Doe",
       course: "Course test",
       password: "password-test",
+      email: "test@email.com",
     };
 
     await enrollEducator.execute(educator);

@@ -3,6 +3,7 @@ import { randomUUID } from "node:crypto";
 export class Educator {
   private _id!: string;
   private _name!: string;
+  private _email!: string;
   private _password!: string;
   private _course!: string;
   private _createdAt!: Date;
@@ -14,6 +15,10 @@ export class Educator {
 
   public get name() {
     return this._name;
+  }
+
+  public get email() {
+    return this._email;
   }
 
   public get password() {
@@ -34,6 +39,10 @@ export class Educator {
 
   public set name(value: string) {
     this._name = value;
+  }
+
+  public set email(value: string) {
+    this._email = value;
   }
 
   public set password(value: string) {

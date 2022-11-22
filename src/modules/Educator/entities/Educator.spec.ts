@@ -6,9 +6,13 @@ let educator = new Educator();
 test("Enroll a educator", () => {
   educator.name = "John Doe";
   educator.course = "Mathematics";
+  educator.password = "test-password";
+  educator.email = "test@email.com";
 
   expect(educator).toBeInstanceOf(Educator);
   expect(educator.name).toEqual("John Doe");
+  expect(educator.email).toEqual("test@email.com");
+  expect(educator.password).toEqual("test-password");
   expect(educator.createdAt).toBeInstanceOf(Date);
 });
 
