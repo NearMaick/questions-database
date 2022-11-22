@@ -39,6 +39,7 @@ beforeAll(async () => {
   const { id } = await enrollEducator.execute({
     name: "Peter Parker",
     course: "Sistemas de Informação",
+    password: "password-test",
   });
 
   await createQuestion.execute({
@@ -113,6 +114,7 @@ describe("Questions Use Case", () => {
     const { id } = await enrollEducator.execute({
       name: "Mary Jane",
       course: "Análise de Sistemas",
+      password: "password-test",
     });
     await createQuestion.execute({
       subject: "Diagrama de fluxo",

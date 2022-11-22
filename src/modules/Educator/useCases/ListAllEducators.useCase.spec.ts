@@ -12,11 +12,13 @@ describe("List all educators", async () => {
     await enrollEducator.execute({
       name: "Mary Jane",
       course: "Sistemas Operacionais",
+      password: "password-test",
     });
 
     await enrollEducator.execute({
       name: "Peter Parker",
       course: "Empreendedorismo",
+      password: "password-test",
     });
   });
 
@@ -24,6 +26,7 @@ describe("List all educators", async () => {
     const educator = await enrollEducator.execute({
       name: "John Doe",
       course: "Inteligência artificial",
+      password: "password-test",
     });
 
     const educators = await listAllEducators.execute();

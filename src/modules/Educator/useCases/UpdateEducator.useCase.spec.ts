@@ -17,6 +17,7 @@ it("should be able to edit a educator", async () => {
   const { name } = await enrollEducator.execute({
     name: "John Doe",
     course: "Course test",
+    password: "password-test",
   });
 
   const educator = await inMemoryEducatorsRepository.listByName(name);
@@ -24,7 +25,9 @@ it("should be able to edit a educator", async () => {
   await updateEducator.execute(educator?.id!, {
     name: "Mary Jane",
     course: "Course test",
+    password: "password-test",
   });
 
   expect(inMemoryEducatorsRepository.educators[0].name).toEqual("Mary Jane");
 });
+

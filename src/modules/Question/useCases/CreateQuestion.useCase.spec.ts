@@ -24,6 +24,7 @@ describe("Questions Use Case", () => {
     const { id } = await enrollEducator.execute({
       name: "Peter Parker",
       course: "Sistemas de Informação",
+      password: "password-test",
     });
 
     await expect(
@@ -59,6 +60,7 @@ describe("Questions Use Case", () => {
     const { id } = await enrollEducator.execute({
       name: "Peter Parker",
       course: "Sistemas de Informação",
+      password: "password-test",
     });
 
     await expect(

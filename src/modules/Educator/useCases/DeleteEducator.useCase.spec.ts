@@ -17,6 +17,7 @@ it("should be able to delete a educator", async () => {
   const { name } = await enrollEducator.execute({
     name: "John Doe",
     course: "Course test",
+    password: "password-test",
   });
 
   const educator = await inMemoryEducatorsRepository.listByName(name);

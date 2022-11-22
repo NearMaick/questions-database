@@ -8,6 +8,7 @@ export interface IEducatorsRepository {
   create({
     name,
     course,
+    password,
   }: ICreateEducatorRepositoryDTO): Promise<IEducatorsListDTO>;
 
   listByName(name: string): Promise<IEducatorsListDTO | null | undefined>;

@@ -14,16 +14,19 @@ describe("List educator by name", async () => {
     await enrollEducator.execute({
       name: "Mary Jane",
       course: "Sistemas Operacionais",
+      password: "password-test",
     });
 
     await enrollEducator.execute({
       name: "Peter Parker",
       course: "Empreendedorismo",
+      password: "password-test",
     });
 
     await enrollEducator.execute({
       name: "John Doe",
       course: "Empreendedorismo",
+      password: "password-test",
     });
   });
 

@@ -11,10 +11,12 @@ export class InMemoryEducatorsRepository implements IEducatorsRepository {
   async create({
     name,
     course,
+    password,
   }: ICreateEducatorRepositoryDTO): Promise<IEducatorsListDTO> {
     const educator = new Educator();
     educator.name = name;
     educator.course = course;
+    educator.password = password;
 
     this.educators.push(educator);
 
