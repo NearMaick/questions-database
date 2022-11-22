@@ -14,8 +14,9 @@ const authenticateEducatorController = new AuthenticateEducatorController();
 export const educatorsRoutes = Router();
 
 educatorsRoutes.post("/enroll", enrollEducatorController.handle);
+educatorsRoutes.post("/auth", authenticateEducatorController.handle);
+
 educatorsRoutes.get("/", listAllEducatorsController.handle);
 educatorsRoutes.put("/update/:id", updateEducatorController.handle);
 educatorsRoutes.delete("/delete/:id", deleteEducatorController.handle);
-educatorsRoutes.post("/auth", authenticateEducatorController.handle);
 

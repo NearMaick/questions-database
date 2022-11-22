@@ -3,12 +3,14 @@ GET http://localhost:3333/questions/list-by-type-question/MULTIPLE_CHOICE
 
 ###
 GET http://localhost:3333/questions/list-by-type-question/ESSAY
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NjkxNDA1MDgsImV4cCI6MTY2OTE0NzcwOCwic3ViIjoiNzcyNWNlOTMtMDAyOC00YzMzLWJlZGQtMzI1ZWFkNjRmNzhkIn0.fzpVO1urdzk37rfbkQxWigYxMRD3Cls4XzJBhraC1NU
 ###
 GET http://localhost:3000/tweets/634586dbcef12dae83f3bde3
 
 ###
 GET http://localhost:3333/educators
+Content-Type: application/json
+
 
 ###
 POST http://localhost:3333/educators/enroll
