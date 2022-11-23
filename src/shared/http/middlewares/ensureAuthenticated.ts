@@ -5,7 +5,7 @@ interface IPayload {
   sub: string;
 }
 
-export async function ensureAuthenticated(
+export function ensureAuthenticated(
   request: Request,
   _: Response,
   next: NextFunction
@@ -33,8 +33,4 @@ export async function ensureAuthenticated(
     throw new Error("Invalid token");
   }
 }
-
-// escrever um teste para testar o middleware
-// https://plainenglish.io/blog/how-to-unit-test-express-middleware-typescript-jest-c6a7ad166e74
-// https://vitest.dev/guide/mocking.html
 
