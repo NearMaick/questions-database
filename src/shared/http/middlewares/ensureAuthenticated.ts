@@ -24,7 +24,7 @@ export function ensureAuthenticated(
       "define-secret-token-here"
     ) as IPayload;
 
-    request.user = {
+    request.educator = {
       id: user_id,
     };
 

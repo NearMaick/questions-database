@@ -12,7 +12,7 @@ const createQuestion = new CreateQuestionUseCase(
 
 export class CreateQuestionController {
   async handle(request: Request, response: Response) {
-    const educator_id = "710df79f-87cc-4ec1-8af5-f69f7402f33a";
+    const educator_id = request.educator.id;
     const {
       type_question,
       subject,
