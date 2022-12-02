@@ -40,6 +40,7 @@ beforeAll(async () => {
     name: "Peter Parker",
     course: "Sistemas de Informação",
     password: "password-test",
+    email: "peter@parker.test",
   });
 
   await createQuestion.execute({
@@ -115,6 +116,7 @@ describe("Questions Use Case", () => {
       name: "Mary Jane",
       course: "Análise de Sistemas",
       password: "password-test",
+      email: "mary-jane@test.com",
     });
     await createQuestion.execute({
       subject: "Diagrama de fluxo",
