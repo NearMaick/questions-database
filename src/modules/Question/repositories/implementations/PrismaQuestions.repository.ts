@@ -30,8 +30,12 @@ export class PrismaQuestionsRepository implements IQuestionsRepository {
     return question;
   }
 
-  listBySubject(subject: string): Promise<IQuestionsListDTO[]> {
-    throw new Error("Method not implemented.");
+  async listBySubject(subject: string): Promise<IQuestionsListDTO[]> {
+    return prismaClient.question.findMany({
+      where: {
+        subject,
+      },
+    });
   }
 
   async listByTypeQuestion(typeQuestion: IQuestionType): Promise<any[]> {

@@ -24,7 +24,7 @@ model Question {
   id           String       @id @default(uuid())
   educator_id  String
   typeQuestion TypeQuestion
-  subject      String       @unique
+  subject      String
   description  String
   answer       String[]
   correct      String
