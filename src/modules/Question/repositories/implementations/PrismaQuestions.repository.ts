@@ -31,19 +31,11 @@ export class PrismaQuestionsRepository implements IQuestionsRepository {
   }
 
   async listBySubject(subject: string): Promise<IQuestionsListDTO[]> {
-    return prismaClient.question.findMany({
-      where: {
-        subject,
-      },
-    });
+    return prismaClient.$queryRaw`SELECT "public"."Question"."id", "public"."Question"."educator_id", "public"."Question"."typeQuestion", "public"."Question"."subject", "public"."Question"."description", "public"."Question"."answer", "public"."Question"."correct", "public"."Question"."createdAt", "public"."Question"."updatedAt" FROM "public"."Question" WHERE "public"."Question"."subject" = ${subject} ORDER BY random() LIMIT 1`;
   }
 
   async listByTypeQuestion(typeQuestion: IQuestionType): Promise<any[]> {
-    return prismaClient.question.findMany({
-      where: {
-        typeQuestion,
-      },
-    });
+    return prismaClient.$queryRaw`SELECT "public"."Question"."id", "public"."Question"."educator_id", "public"."Question"."typeQuestion", "public"."Question"."subject", "public"."Question"."description", "public"."Question"."answer", "public"."Question"."correct", "public"."Question"."createdAt", "public"."Question"."updatedAt" FROM "public"."Question" WHERE "public"."Question"."typeQuestion"::text = ${typeQuestion} ORDER BY random()`;
   }
 
   listByEducatorId(educatorId: string): Promise<IQuestionsListDTO[]> {
