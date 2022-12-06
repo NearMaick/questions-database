@@ -4,8 +4,8 @@ import { IQuestionsRepository } from "../repositories/Questions.repository";
 export class ListQuestionsByTypeQuestion {
   constructor(private questionsRepository: IQuestionsRepository) {}
 
-  async execute(typeQuestion: IQuestionType) {
-    return this.questionsRepository.listByTypeQuestion(typeQuestion);
+  async execute(typeQuestion: IQuestionType, quantity: number) {
+    return this.questionsRepository.listByTypeQuestion(typeQuestion, quantity);
   }
 }
 

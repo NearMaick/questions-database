@@ -78,6 +78,24 @@ beforeAll(async () => {
     answer: ["answer A", "answer B", "answer C", "answer D", "answer E"],
     correct: "answer C",
   });
+
+  await createQuestion.execute({
+    typeQuestion: "ESSAY",
+    subject: "mathematics",
+    educator_id: id,
+    description: "Example description",
+    answer: ["answer E"],
+    correct: "answer E",
+  });
+
+  await createQuestion.execute({
+    typeQuestion: "MULTIPLE_CHOICE",
+    subject: "mathematics",
+    educator_id: id,
+    description: "Example description",
+    answer: ["answer A", "answer B", "answer C", "answer D", "answer E"],
+    correct: "answer C",
+  });
 });
 
 describe("Questions Use Case", () => {
@@ -93,12 +111,14 @@ describe("Questions Use Case", () => {
 
   it("should be able to list questions by question type", async () => {
     const typeQuestionStub = "ESSAY";
+    const questionsQuantity = 0;
 
     const questionsByTypeQuestion = await listQuestionsByTypeQuestion.execute(
-      typeQuestionStub
+      typeQuestionStub,
+      questionsQuantity
     );
 
-    expect(questionsByTypeQuestion.length).toEqual(2);
+    expect(questionsByTypeQuestion.length).toEqual(3);
   });
 
   it("should be able to not listing questions by educator id", async () => {
@@ -139,7 +159,19 @@ describe("Questions Use Case", () => {
       educator?.id!
     );
 
-    expect(questionsByName.length).toBe(4);
+    expect(questionsByName.length).toBe(6);
+  });
+
+  it("should be able to list a limited questions defined by educator", async () => {
+    const typeQuestionStub = "ESSAY";
+    const questionsQuantity = 2;
+
+    const questionsByTypeQuestion = await listQuestionsByTypeQuestion.execute(
+      typeQuestionStub,
+      questionsQuantity
+    );
+
+    expect(questionsByTypeQuestion.length).toEqual(2);
   });
 });
 
