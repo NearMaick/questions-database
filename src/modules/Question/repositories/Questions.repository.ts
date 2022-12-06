@@ -16,7 +16,7 @@ export interface IQuestionsRepository {
   listBySubject(subject: string): Promise<IQuestionsListDTO[]>;
   listByTypeQuestion(
     typeQuestion: IQuestionType,
-    quantity: number
+    quantity: string
   ): Promise<IQuestionsListDTO[]>;
   listByEducatorId(educatorId: string): Promise<IQuestionsListDTO[]>;
 }

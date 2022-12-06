@@ -2,7 +2,7 @@
 GET http://localhost:3333/questions/list-by-type-question/MULTIPLE_CHOICE
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NzAzMjY0NzEsImV4cCI6MTY3MDMzMzY3MSwic3ViIjoiNzcyNWNlOTMtMDAyOC00YzMzLWJlZGQtMzI1ZWFkNjRmNzhkIn0.fkEwJsDCEQ5_P4-Pczgr7QdnDGtTjA2GpbRrCp4VIOE
 ###
-GET http://localhost:3333/questions/list-by-type-question/ESSAY
+GET http://localhost:3333/questions/list-by-type-question/ESSAY?quantity=3
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NzAzMjY0NzEsImV4cCI6MTY3MDMzMzY3MSwic3ViIjoiNzcyNWNlOTMtMDAyOC00YzMzLWJlZGQtMzI1ZWFkNjRmNzhkIn0.fkEwJsDCEQ5_P4-Pczgr7QdnDGtTjA2GpbRrCp4VIOE
 
 ###

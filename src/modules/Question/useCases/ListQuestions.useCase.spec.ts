@@ -111,7 +111,7 @@ describe("Questions Use Case", () => {
 
   it("should be able to list questions by question type", async () => {
     const typeQuestionStub = "ESSAY";
-    const questionsQuantity = 0;
+    const questionsQuantity = "0";
 
     const questionsByTypeQuestion = await listQuestionsByTypeQuestion.execute(
       typeQuestionStub,
@@ -164,7 +164,7 @@ describe("Questions Use Case", () => {
 
   it("should be able to list a limited questions defined by educator", async () => {
     const typeQuestionStub = "ESSAY";
-    const questionsQuantity = 2;
+    const questionsQuantity = "2";
 
     const questionsByTypeQuestion = await listQuestionsByTypeQuestion.execute(
       typeQuestionStub,

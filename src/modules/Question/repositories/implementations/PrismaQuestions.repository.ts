@@ -34,8 +34,17 @@ export class PrismaQuestionsRepository implements IQuestionsRepository {
     return prismaClient.$queryRaw`SELECT "public"."Question"."id", "public"."Question"."educator_id", "public"."Question"."typeQuestion", "public"."Question"."subject", "public"."Question"."description", "public"."Question"."answer", "public"."Question"."correct", "public"."Question"."createdAt", "public"."Question"."updatedAt" FROM "public"."Question" WHERE "public"."Question"."subject" = ${subject} ORDER BY random() LIMIT 1`;
   }
 
-  async listByTypeQuestion(typeQuestion: IQuestionType): Promise<any[]> {
-    return prismaClient.$queryRaw`SELECT "public"."Question"."id", "public"."Question"."educator_id", "public"."Question"."typeQuestion", "public"."Question"."subject", "public"."Question"."description", "public"."Question"."answer", "public"."Question"."correct", "public"."Question"."createdAt", "public"."Question"."updatedAt" FROM "public"."Question" WHERE "public"."Question"."typeQuestion"::text = ${typeQuestion} ORDER BY random()`;
+  async listByTypeQuestion(
+    typeQuestion: IQuestionType,
+    quantity: string
+  ): Promise<any[]> {
+    if (Number(quantity) === 0) {
+      return prismaClient.$queryRaw`SELECT "public"."Question"."id", "public"."Question"."educator_id", "public"."Question"."typeQuestion", "public"."Question"."subject", "public"."Question"."description", "public"."Question"."answer", "public"."Question"."correct", "public"."Question"."createdAt", "public"."Question"."updatedAt" FROM "public"."Question" WHERE "public"."Question"."typeQuestion"::text = ${typeQuestion} ORDER BY random()`;
+    } else {
+      return prismaClient.$queryRaw`SELECT "public"."Question"."id", "public"."Question"."educator_id", "public"."Question"."typeQuestion", "public"."Question"."subject", "public"."Question"."description", "public"."Question"."answer", "public"."Question"."correct", "public"."Question"."createdAt", "public"."Question"."updatedAt" FROM "public"."Question" WHERE "public"."Question"."typeQuestion"::text = ${typeQuestion} ORDER BY random() LIMIT ${Number(
+        quantity
+      )}`;
+    }
   }
 
   listByEducatorId(educatorId: string): Promise<IQuestionsListDTO[]> {

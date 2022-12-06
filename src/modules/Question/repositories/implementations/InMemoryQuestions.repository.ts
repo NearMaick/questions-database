@@ -36,13 +36,13 @@ export class InMemoryQuestionsRepository implements IQuestionsRepository {
 
   async listByTypeQuestion(
     typeQuestion: IQuestionType,
-    quantity: number
+    quantity: string
   ): Promise<IQuestionsListDTO[]> {
     const questions = this.questions.filter(
       (question) => question.typeQuestion === typeQuestion
     );
 
-    const listLimitedQuestions = questions.slice(quantity);
+    const listLimitedQuestions = questions.slice(Number(quantity));
 
     return listLimitedQuestions;
   }

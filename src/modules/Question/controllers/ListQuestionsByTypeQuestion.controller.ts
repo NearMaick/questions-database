@@ -11,8 +11,9 @@ const listQuestionsByTypeQuestion = new ListQuestionsByTypeQuestion(
 export class ListQuestionsByTypeQuestionController {
   async handle(request: Request, response: Response) {
     const type = request.params.type as IQuestionType;
+    const quantity = request.query.quantity as unknown as string;
 
-    const questions = await listQuestionsByTypeQuestion.execute(type);
+    const questions = await listQuestionsByTypeQuestion.execute(type, quantity);
     return response.status(201).json(questions);
   }
 }
