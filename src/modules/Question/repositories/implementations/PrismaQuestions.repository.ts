@@ -50,5 +50,13 @@ export class PrismaQuestionsRepository implements IQuestionsRepository {
   listByEducatorId(educatorId: string): Promise<IQuestionsListDTO[]> {
     throw new Error("Method not implemented.");
   }
+
+  async findById(id: string): Promise<IQuestionsListDTO | undefined | null> {
+    return prismaClient.question.findFirst({
+      where: {
+        id,
+      },
+    });
+  }
 }
 
