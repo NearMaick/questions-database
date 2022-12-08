@@ -52,5 +52,9 @@ export class InMemoryQuestionsRepository implements IQuestionsRepository {
       (question) => question.educator_id === educatorId
     );
   }
+
+  async findById(id: string): Promise<IQuestionsListDTO | undefined> {
+    return this.questions.find((question) => question.id === id);
+  }
 }
 

@@ -19,5 +19,6 @@ export interface IQuestionsRepository {
     quantity: string
   ): Promise<IQuestionsListDTO[]>;
   listByEducatorId(educatorId: string): Promise<IQuestionsListDTO[]>;
+  findById(id: string): Promise<IQuestionsListDTO | undefined>;
 }
 

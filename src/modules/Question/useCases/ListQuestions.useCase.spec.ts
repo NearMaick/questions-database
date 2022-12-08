@@ -4,6 +4,7 @@ import { EnrollEducatorUseCase } from "../../Educator/useCases/EnrollEducator.us
 import { ListEducatorByName } from "../../Educator/useCases/ListEducatorByName.useCase";
 import { InMemoryQuestionsRepository } from "../repositories/implementations/InMemoryQuestions.repository";
 import { CreateQuestionUseCase } from "./CreateQuestion.useCase";
+import { FindQuestionById } from "./FindQuestionById.useCase";
 import { ListQuestionsByEducatorId } from "./ListQuestionsByEducatorId.useCase";
 import { ListQuestionsBySubject } from "./ListQuestionsBySubject.useCase";
 import { ListQuestionsByTypeQuestion } from "./ListQuestionsByTypeQuestion.useCase";
@@ -16,6 +17,9 @@ let listQuestionsByEducatorId: ListQuestionsByEducatorId;
 let inMemoryEducatorsRepository: InMemoryEducatorsRepository;
 let enrollEducator: EnrollEducatorUseCase;
 let listEducatorByName: ListEducatorByName;
+let findQuestionById: FindQuestionById;
+
+let id: string;
 
 beforeAll(async () => {
   inMemoryQuestionsRepository = new InMemoryQuestionsRepository();
@@ -33,15 +37,18 @@ beforeAll(async () => {
   listQuestionsByEducatorId = new ListQuestionsByEducatorId(
     inMemoryQuestionsRepository
   );
+  findQuestionById = new FindQuestionById(inMemoryQuestionsRepository);
   enrollEducator = new EnrollEducatorUseCase(inMemoryEducatorsRepository);
   listEducatorByName = new ListEducatorByName(inMemoryEducatorsRepository);
 
-  const { id } = await enrollEducator.execute({
+  const educator = await enrollEducator.execute({
     name: "Peter Parker",
     course: "Sistemas de Informação",
     password: "password-test",
     email: "peter@parker.test",
   });
+
+  id = educator.id;
 
   await createQuestion.execute({
     subject: "portuguese",
@@ -172,6 +179,23 @@ describe("Questions Use Case", () => {
     );
 
     expect(questionsByTypeQuestion.length).toEqual(2);
+  });
+
+  it("should be able to list a question by id", async () => {
+    const { _id }: any = await createQuestion.execute({
+      typeQuestion: "MULTIPLE_CHOICE",
+      subject: "identification",
+      educator_id: id,
+      description: "Example descriptionID",
+      answer: ["answer A", "answer B", "answer C", "answer D", "answer E"],
+      correct: "answer C",
+    });
+
+    const question = await findQuestionById.execute(_id);
+
+    expect(question?.id).toEqual(_id);
+    expect(question?.subject).toEqual("identification");
+    expect(question?.description).toEqual("Example descriptionID");
   });
 });
 

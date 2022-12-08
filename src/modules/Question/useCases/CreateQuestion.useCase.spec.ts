@@ -25,6 +25,7 @@ describe("Questions Use Case", () => {
       name: "Peter Parker",
       course: "Sistemas de Informação",
       password: "password-test",
+      email: "email@test",
     });
 
     await expect(
@@ -61,6 +62,7 @@ describe("Questions Use Case", () => {
       name: "Peter Parker",
       course: "Sistemas de Informação",
       password: "password-test",
+      email: "email@test",
     });
 
     await expect(
